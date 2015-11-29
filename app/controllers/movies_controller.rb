@@ -12,7 +12,11 @@ class MoviesController < ApplicationController
 
   def index
     @sort = params[:sort]
-    @movies = Movie.order(params[:sort])
+    
+    @all_ratings = Movie.get_ratings
+    @ratings_filter = params[:ratings]? params[:ratings].keys: @all_ratings
+    
+    @movies = Movie.where(rating: @ratings_filter).order(@sort)
   end
 
   def new

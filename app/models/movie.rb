@@ -1,10 +1,5 @@
 class Movie < ActiveRecord::Base
-    def sorted(params)
-        debugger
-        if params[:sort]
-            return Movie.order(params[:sort])
-        else
-            return Movie.all
-        end
+    def self.get_ratings
+        ratings = ['G', 'PG', 'PG-13', 'R']
     end
 end
